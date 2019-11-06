@@ -11,7 +11,7 @@ export class TitleScene extends Scene
     start()
     {
         // a clickable label to cause a scene change
-        let text = new createjs.Text("Click me!", "20px Arial", "#ffffff");
+        let text = new createjs.Text("Click to begin playing!", "20px Arial", "#ffffff");
 
         text.addEventListener("click", () =>
         {

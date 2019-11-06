@@ -24,6 +24,8 @@ export class Game
 
         this.stage = new createjs.Stage('stage');
 
+        this.stage.enableMouseOver(10);
+
         // Subscribe to required springroll States.
         this.app.state.pause.subscribe((value) =>
         {

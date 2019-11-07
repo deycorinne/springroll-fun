@@ -17,6 +17,9 @@ export class GameScene extends Scene {
     const queue = new createjs.LoadQueue();
     queue.installPlugin(createjs.Sound); // <-- SoundJS has a cache built in.;
     queue.loadFile({ id: "ball", src: "./assets/images/Ball.png" });
+    queue.loadFile({ id: "endAnimals", src: "./assets/images/dog_and_cat.png" });
+    queue.loadFile({ id: "startAnimals", src: "./assets/images/cat_and_dog1.png" });
+
     queue.loadFile({ id: "bounce", src: "./assets/sound/bounce.ogg" });
     queue.loadFile({ id: "click", src: "./assets/sound/click.mp3" });
     queue.loadFile({ id: "tick", src: "./assets/sound/tick.mp3" });

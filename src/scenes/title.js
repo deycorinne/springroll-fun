@@ -38,14 +38,14 @@ export class TitleScene extends Scene {
     this.addChild(three);
 
     let six = new createjs.Text("6", "50px Arial", "#c7228d");
-    six.x = GAMEPLAY.WIDTH / 2 - three.getBounds().width / 2;
-    six.y = (GAMEPLAY.HEIGHT * 3) / 4 - three.getBounds().height;
+    six.x = GAMEPLAY.WIDTH / 2 - six.getBounds().width / 2;
+    six.y = (GAMEPLAY.HEIGHT * 3) / 4 - six.getBounds().height;
 
     this.addChild(six);
 
     let twelve = new createjs.Text("12", "50px Arial", "#2267c7");
     twelve.x = (GAMEPLAY.WIDTH * 2) / 3 - twelve.getBounds().width / 2; // / (this.total + 1)) * num
-    twelve.y = (GAMEPLAY.HEIGHT * 3) / 4 - three.getBounds().height;
+    twelve.y = (GAMEPLAY.HEIGHT * 3) / 4 - twelve.getBounds().height;
 
     this.addChild(twelve);
 

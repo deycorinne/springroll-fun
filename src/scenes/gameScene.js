@@ -16,11 +16,11 @@ export class GameScene extends Scene {
     // load necessary objects
     const queue = new createjs.LoadQueue();
     queue.installPlugin(createjs.Sound); // <-- SoundJS has a cache built in.;
-    queue.loadFile({ id: "ball", src: "./assets/Ball.png" });
-    queue.loadFile({ id: "bounce", src: "./assets/bounce.ogg" });
-    queue.loadFile({ id: "click", src: "./assets/click.mp3" });
-    queue.loadFile({ id: "tick", src: "./assets/tick.mp3" });
-    queue.loadFile({ id: "tada", src: "./assets/tada.mp3" });
+    queue.loadFile({ id: "ball", src: "./assets/images/Ball.png" });
+    queue.loadFile({ id: "bounce", src: "./assets/sound/bounce.ogg" });
+    queue.loadFile({ id: "click", src: "./assets/sound/click.mp3" });
+    queue.loadFile({ id: "tick", src: "./assets/sound/tick.mp3" });
+    queue.loadFile({ id: "tada", src: "./assets/sound/tada.mp3" });
 
     queue.on("fileload", event => GameCache.onLoad(event));
 

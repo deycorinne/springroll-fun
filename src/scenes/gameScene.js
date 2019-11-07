@@ -2,11 +2,14 @@ import { Scene } from "./scene";
 import { Ball } from "../gameobjects/ball";
 import { StopWatch } from "../gameobjects/stopwatch";
 import { GameCache } from "../cache";
+import { EndScene } from "./end";
 
 export class GameScene extends Scene {
-  constructor(game) {
+  constructor(game, total) {
     super(game);
     this.balls = [];
+    this.clicked = [];
+    this.total = total;
   }
 
   preload() {
@@ -15,6 +18,9 @@ export class GameScene extends Scene {
     queue.installPlugin(createjs.Sound); // <-- SoundJS has a cache built in.;
     queue.loadFile({ id: "ball", src: "./assets/Ball.png" });
     queue.loadFile({ id: "bounce", src: "./assets/bounce.ogg" });
+    queue.loadFile({ id: "click", src: "./assets/click.mp3" });
+    queue.loadFile({ id: "tick", src: "./assets/tick.mp3" });
+    queue.loadFile({ id: "tada", src: "./assets/tada.mp3" });
 
     queue.on("fileload", event => GameCache.onLoad(event));
 
@@ -30,27 +36,26 @@ export class GameScene extends Scene {
     // add some items to this scene
 
     this.createStopWatch(this.game);
-    // TODO: get total input from user during title scene and remove hardcode
-    const total = 10;
-    for (let i = 0; i < total; i++) {
-      this.createAndAddBall(this.game, i + 1, total);
+
+    for (let i = 0; i < this.total; i++) {
+      this.createAndAddBall(this.game, i + 1);
     }
   }
 
   createStopWatch(game) {
-      this.stopwatch = new StopWatch({
-          game: game,
-          x: 50,
-          y: 50
-      })
-      this.addChild(this.stopwatch)
+    this.stopwatch = new StopWatch({
+      game: game,
+      x: 50,
+      y: 50
+    });
+    this.addChild(this.stopwatch);
   }
 
-  createAndAddBall(game, num, total) {
+  createAndAddBall(game, num) {
     const name = `ball${num}`;
     this[name] = new Ball({
       game: game,
-      x: (game.width / (total + 1)) * num,
+      x: (game.width / (this.total + 1)) * num,
       y: this.game.height / (num + 1)
     });
     this.addChild(this[name]);
@@ -61,8 +66,23 @@ export class GameScene extends Scene {
     // bounce the balls
     this.balls.forEach(function(ball) {
       this[ball].update(deltaTime);
+      if (this[ball].clicked) {
+        this.clicked.push(this[ball].id);
+      }
     }, this);
 
-    this.stopwatch.update();
+    // increment the stopwatch
+    let timePlaying = this.stopwatch.update(deltaTime);
+
+    // check to see if all balls are clicked and if they are, game over!
+    if (
+      this.clicked.filter((v, i) => this.clicked.indexOf(v) === i).length ==
+      this.total
+    ) {
+      const nextScene = new EndScene(this.game, timePlaying);
+      nextScene.preload().then(() => {
+        this.game.app.state.scene.value = nextScene;
+      });
+    }
   }
 }

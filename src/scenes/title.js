@@ -1,6 +1,7 @@
 import { GameScene } from "./gameScene";
 import { Scene } from "./scene";
 import { GAMEPLAY } from "../constants";
+import { StartAnimals } from "../gameobjects/startAnimals";
 
 export class TitleScene extends Scene {
   constructor(game) {
@@ -53,6 +54,14 @@ export class TitleScene extends Scene {
     three.addEventListener("click", this.handleClick);
     six.addEventListener("click", this.handleClick);
     twelve.addEventListener("click", this.handleClick);
+
+
+    this.startAnimals = new StartAnimals({
+      game: this.game,
+      x: 150,
+      y: 150
+    })
+    this.addChild(this.startAnimals);
   }
 
   handleClick(e) {

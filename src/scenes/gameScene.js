@@ -3,6 +3,7 @@ import { Ball } from "../gameobjects/ball";
 import { StopWatch } from "../gameobjects/stopwatch";
 import { GameCache } from "../cache";
 import { EndScene } from "./end";
+import { StartAnimals } from "../gameobjects/startAnimals";
 
 export class GameScene extends Scene {
   constructor(game, total) {

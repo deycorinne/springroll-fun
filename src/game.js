@@ -1,7 +1,6 @@
 import * as Springroll from 'springroll';
 
 import { TitleScene } from './scenes/title';
-import { GameScene } from './scenes/gameScene';
 import { Property, ScaleManager } from 'springroll';
 import { GAMEPLAY } from './constants';
 
@@ -52,7 +51,10 @@ export class Game
         // wait for the app to be ready, then set the new scene
         this.app.state.ready.subscribe(() =>
         {
-            this.app.state.scene.value = new TitleScene(this);
+            const nextScene = new TitleScene(this); 
+            nextScene.preload().then(() => {
+              this.app.state.scene.value = nextScene;
+            });
         });
 
         // Set Ticker

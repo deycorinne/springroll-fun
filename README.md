@@ -1,19 +1,14 @@
-# Springroll Seed -- CreateJS
+# Springroll Sample Game using CreateJS
 
-Developers should use SpringRoll Seed as a starting point for games projects. It comes bundled with Webpack, Babel, and a few node modules to streamline development. This versions comes with an example of how to implement a simple Springroll game using CreateJS
+I used the SpringRoll Seed as a starting point for this simple game. It comes bundled with Webpack, Babel, and a few node modules to streamline development. This versions comes with an example of how to implement a simple Springroll game using CreateJS
 
-## Setup
+## Run it!
 
 ```
-$ git clone -o template https://github.com/SpringRoll/Springroll-Seed.git my_project
-
-$ cd my_project
-
 $ npm install
-```
-From here you can add your own remote origin by typing `git remote add origin URL.git`.
 
-__Note__ To receive Springroll-Seed updates, use 'git pull template'.
+$ npm start
+```
 
 ## Commands
 

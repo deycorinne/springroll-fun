@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --env.dev",
     "build:release": "./release.sh",
     "build:debug": "webpack --env.dev",
-    "qa": "npx sras -p . --config ./srasConfig.json"
+    "qa": "npx sras -p . --config ./srasConfig.json -c 123"
   },
   "author": "Corinne Dey",
   "license": "ISC",

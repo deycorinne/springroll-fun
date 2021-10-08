@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.dev",
-    "build:release": "npm run qa && webpack --env.prod",
+    "build:release": "./release.sh",
     "build:debug": "webpack --env.dev",
     "qa": "npx sras -p . --config ./srasConfig.json"
   },

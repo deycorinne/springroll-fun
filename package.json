@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.dev",
-    "build:release": "webpack --env.prod",
-    "build:debug": "webpack --env.dev"
+    "build:release": "./release.sh",
+    "build:debug": "webpack --env.dev",
+    "qa": "npx sras -p . --config ./srasConfig.json -c 123"
   },
   "author": "Corinne Dey",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "easeljs": "^1.0.2",
+    "eslint": "^7.32.0",
     "file-loader": "^2.0.0",
     "howler": "^2.2.1",
     "html-webpack-plugin": "^3.2.0",
@@ -29,6 +31,7 @@
     "serialize-javascript": ">=3.1.0",
     "soundjs": "^1.0.1",
     "springroll": "^2.3.2",
+    "springroll-automated-qa": "^1.2.1",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.3.1"
